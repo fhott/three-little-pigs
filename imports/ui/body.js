@@ -3,12 +3,12 @@ import { Tasks } from '../api/tasks.js';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { ReactiveVar } from 'meteor/reactive-var';
 
-Template.body.onCreated( () => {
+Template.main.onCreated( () => {
   const instance = Template.instance();
   instance.state = new ReactiveVar();
 });
 
-Template.body.helpers({
+Template.main.helpers({
   tasks() {
     const instance = Template.instance();
 
@@ -22,12 +22,13 @@ Template.body.helpers({
   }
 });
 
-Template.body.events({
-  'submit .new-task' (event) {
+Template.main.events({
+  'submit .new-task' (event, instance) {
     event.preventDefault();
 
-    const target = event.target;
-    const text = target.text.value;
+    console.log($(".wood").value());
+
+    const text = $(".wood").value();
 
     Tasks.insert({
       text,
@@ -39,6 +40,5 @@ Template.body.events({
   },
   'change .hide-completed input' (event, instance) {
     instance.state.set(event.target.checked);
-    console.log('hide',instance);
   }
 });
