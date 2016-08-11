@@ -22,30 +22,3 @@
     </div>
   </body>
 </template>
-
-
-<template name="addWood">
-  <body>
-    <div class="container">
-      <header>
-        <h1>Wood List ({{incompleteCount}})</h1>
-      </header>
-
-      <label class="hide-completed">
-        <input type="checkbox" />
-        Hide Completed Tasks
-      </label>
-
-      <form class="new-task">
-        <input type="text" name="text" class="wood" placeholder="Type to add new tasks" />
-        <a href="#" class="new-wood">add</a>
-      </form>
-
-      <ul>
-        {{#each tasks}}
-          {{> task}}
-        {{/each}}
-      </ul>
-    </div>
-  </body>
-</template>
